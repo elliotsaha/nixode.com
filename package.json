@@ -1,0 +1,56 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "email": "email dev --port 4000 --dir src/emails",
+    "cf-type-gen": "dotenv -- bash -c 'cf-content-types-generator -s $NEXT_CONTENTFUL_SPACE_ID -t $NEXT_CONTENTFUL_CMA_TOKEN -X -o ./src/types/contentful'",
+    "fix": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/css": "^11.11.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@gsap/react": "^2.1.0",
+    "@hookform/resolvers": "^3.3.4",
+    "@react-email/components": "^0.0.15",
+    "@react-email/render": "^0.0.12",
+    "@tanstack/react-query": "^5.25.0",
+    "axios": "^1.6.7",
+    "cf-content-types-generator": "^2.15.0",
+    "contentful": "^10.6.25",
+    "dotenv": "^16.4.5",
+    "dotenv-cli": "^7.3.0",
+    "gsap": "^3.12.5",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-email": "^2.1.0",
+    "react-hook-form": "^7.51.0",
+    "react-icons": "^5.0.1",
+    "resend": "^3.2.0",
+    "split-type": "^0.3.4",
+    "winston": "^3.12.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.8.2",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "typescript": "~5.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
