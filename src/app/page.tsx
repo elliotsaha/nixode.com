@@ -1,5 +1,5 @@
-'use client';
-import React, { useRef } from 'react';
+"use client";
+import React, { useRef, useState } from "react";
 import {
   GridItem,
   Heading,
@@ -13,21 +13,22 @@ import {
   Image,
   SimpleGrid,
   Skeleton,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 import {
   FlexSection,
   Section,
   BrandHeading,
   HiddenHeading,
-} from '@/components/factory';
-import { ButtonLink, SplitText } from '@/components';
-import { FiBox, FiTable, FiLayers, FiMapPin } from 'react-icons/fi';
-import { IconType } from 'react-icons';
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
-import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
-import { CaseStudy } from '@/types';
+} from "@/components/factory";
+import { ButtonLink, SplitText } from "@/components";
+import { FiBox, FiTable, FiLayers, FiMapPin } from "react-icons/fi";
+import { IconType } from "react-icons";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { CaseStudy } from "@/types";
+import { normalizeLength } from "@/helpers";
 
 interface CardProps {
   title: string;
@@ -40,7 +41,7 @@ const Card = ({ title, children, icon, color }: CardProps) => {
   return (
     <Flex
       bg="mono.white"
-      p={{ base: '8', xl: '12' }}
+      p={{ base: "8", xl: "12" }}
       borderRadius="3xl"
       flexDir="column"
       boxShadow="lg"
@@ -58,7 +59,7 @@ const Card = ({ title, children, icon, color }: CardProps) => {
 // get featured work
 const getFeatured = async () => {
   const featured = await axios.get(
-    `${process.env.NEXT_PUBLIC_HOSTNAME}/api/work/featured`
+    `${process.env.NEXT_PUBLIC_HOSTNAME}/api/work/featured`,
   );
   return featured.data;
 };
@@ -71,28 +72,28 @@ const Home = () => {
     featuredLeft: CaseStudy;
     featuredRight: CaseStudy;
   }>({
-    queryKey: ['featured-work'],
+    queryKey: ["featured-work"],
     queryFn: getFeatured,
   });
 
   useGSAP(
     () => {
-      gsap.set('.animate-header-line-1', { visibility: 'visible' });
-      gsap.set('.animate-header-line-2', { visibility: 'visible' });
-      gsap.from('.animate-header-line-1', {
+      gsap.set(".animate-header-line-1", { visibility: "visible" });
+      gsap.set(".animate-header-line-2", { visibility: "visible" });
+      gsap.from(".animate-header-line-1", {
         y: 150,
         stagger: {
           each: 0.005,
         },
       });
-      gsap.from('.animate-header-line-2', {
+      gsap.from(".animate-header-line-2", {
         y: 150,
         stagger: {
           each: 0.015,
         },
       });
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (
@@ -103,46 +104,47 @@ const Home = () => {
         w="100%"
         position="absolute"
         loading="eager"
-        mt={{ base: '24', lg: '-36' }}
+        mt={{ base: "24", lg: "-36" }}
         zIndex="-1"
       />
       <Container maxW="container.xl" ref={container}>
         <Section position="relative">
           <main>
             <Flex
-              h={{ base: 'auto', md: '100vh' }}
+              h={{ base: "auto", md: "100vh" }}
               alignItems="center"
-              pt={{ base: '48', md: '0' }}
-              pb={{ base: '24', md: '0' }}
+              pt={{ base: "48", md: "0" }}
+              pb={{ base: "24", md: "0" }}
             >
               <FlexSection flexDir="column" gap="4">
-                <Flex mb={{ base: '-2', md: '-4' }} alignItems="center" gap="1">
+                <Flex mb={{ base: "-2", md: "-4" }} alignItems="center" gap="1">
                   <Icon as={FiMapPin} color="mono.gray.500" />
-                  <Text>Vancouver, BC</Text>
+                  <Text>Based in Canada</Text>
                 </Flex>
                 <Flex flexDir="column" gap="0">
                   <HiddenHeading>
-                    Designer by day, Developer by night.
+                    Turnkey solutions for your company
                   </HiddenHeading>
                   <BrandHeading overflow="hidden">
                     <SplitText
                       className="animate-header-line-1"
                       visibility="hidden"
                     >
-                      Designer by day,
+                      Turnkey solutions
                     </SplitText>
                     <br />
                     <SplitText
                       className="animate-header-line-2"
                       visibility="hidden"
                     >
-                      Developer by night.
+                      for your company.
                     </SplitText>
                   </BrandHeading>
                 </Flex>
-                <Text maxW="2xl" fontSize={{ base: 'md', md: 'lg' }}>
-                  I&apos;m a full-stack developer and UI/UX designer specializing in
-                  creating web applications with React and NextJS.
+                <Text maxW="2xl" fontSize={{ base: "md", md: "lg" }} mt="-4">
+                  At Nixode, we deliver comprehensive turnkey solutions,
+                  expertly tailored to enhance your digital experience and meet
+                  every need.
                 </Text>
                 <Box mt="2">
                   <ButtonLink href="/contact">get in touch</ButtonLink>
@@ -163,9 +165,13 @@ const Home = () => {
                                 "gc3 gc3"`,
             lg: '"gc1 gc2 gc3"',
           }}
-          gridTemplateColumns={{ base: '1fr', md: '1fr 1fr', lg: '1fr 1fr 1fr' }}
-          gridTemplateRows={{ base: '1fr 1fr 1fr', md: '1fr 1fr', lg: '1fr' }}
-          display={{ base: 'flex', md: 'grid' }}
+          gridTemplateColumns={{
+            base: "1fr",
+            md: "1fr 1fr",
+            lg: "1fr 1fr 1fr",
+          }}
+          gridTemplateRows={{ base: "1fr 1fr 1fr", md: "1fr 1fr", lg: "1fr" }}
+          display={{ base: "flex", md: "grid" }}
           flexDirection="column"
         >
           <GridItem area="gc1">
@@ -207,7 +213,7 @@ const Home = () => {
               lg: `"showcase showcase"
                 "small1 small2"`,
             }}
-            gridTemplateColumns={{ base: '100%', lg: '1fr 1fr' }}
+            gridTemplateColumns={{ base: "100%", lg: "1fr 1fr" }}
             gap="8"
           >
             <GridItem
@@ -219,7 +225,7 @@ const Home = () => {
               {isPending && (
                 <Skeleton
                   w="100%"
-                  h={{ base: 'xl', lg: '96' }}
+                  h={{ base: "xl", lg: "96" }}
                   borderRadius="3xl"
                 />
               )}
@@ -232,14 +238,20 @@ const Home = () => {
                   position="relative"
                   overflow="hidden"
                 >
-                  <Flex flexDir="column" p={{ base: '8', lg: '12', xl: '16' }}>
-                    <Image src={data.showcase.icon} h="16" mb="4" mr="auto" alt={data.showcase.title} />
+                  <Flex flexDir="column" p={{ base: "8", lg: "12", xl: "16" }}>
+                    <Image
+                      src={data.showcase.icon}
+                      h="16"
+                      mb="4"
+                      mr="auto"
+                      alt={data.showcase.title}
+                    />
                     <Heading size="xl">{data.showcase.title}</Heading>
                     <Text
                       color="brand.blue.solid"
                       transition="all 0.25s ease-in-out"
                       _groupHover={{
-                        filter: 'brightness(75%)',
+                        filter: "brightness(75%)",
                       }}
                       textTransform="uppercase"
                       letterSpacing="0.25rem"
@@ -256,8 +268,8 @@ const Home = () => {
                     objectFit="cover"
                     mt="auto"
                     borderTopLeftRadius="3xl"
-                    mb={{ base: '0rem', sm: '-4rem', lg: '-5rem', xl: '-4rem' }}
-                    ml={{ base: '1.8rem', sm: '4rem' }}
+                    mb={{ base: "0rem", sm: "-4rem", lg: "-5rem", xl: "-4rem" }}
+                    ml={{ base: "1.8rem", sm: "4rem" }}
                     transition="all 0.25s ease-in-out"
                     boxShadow="lg"
                     alt={data.showcase.title}
@@ -282,41 +294,41 @@ const Home = () => {
                   overflow="hidden"
                   h="100%"
                 >
-                  <Flex flexDir="column" p={{ base: '8', xl: '16' }}>
+                  <Flex flexDir="column" p={{ base: "8", xl: "16" }}>
                     <Image
-                      src={data.featuredLeft.icon}
+                      src={data.featuredLeft?.icon}
                       h="14"
                       mb="4"
                       mr="auto"
-                      alt={data.featuredLeft.title}
+                      alt={data.featuredLeft?.title}
                     />
-                    <Heading size="xl">{data.featuredLeft.title}</Heading>
+                    <Heading size="xl">{data.featuredLeft?.title}</Heading>
                     <Text
                       color="brand.purple.solid"
                       transition="all 0.25s ease-in-out"
                       _groupHover={{
-                        filter: 'brightness(75%)',
+                        filter: "brightness(75%)",
                       }}
                       textTransform="uppercase"
                       letterSpacing="0.25rem"
                       mb="2"
                     >
-                      {data.featuredLeft.subtitle}
+                      {data.featuredLeft?.subtitle}
                     </Text>
                     <Text fontWeight="normal">
-                      {data.featuredLeft.shortDescription}
+                      {data.featuredLeft?.shortDescription}
                     </Text>
                   </Flex>
                   <Image
-                    src={data.featuredLeft.cover}
+                    src={data.featuredLeft?.cover}
                     objectFit="cover"
                     mt="auto"
                     borderTopLeftRadius="3xl"
-                    mb={{ base: '0rem', sm: '-4rem' }}
-                    ml={{ base: '1.8rem', sm: '4rem' }}
+                    mb={{ base: "0rem", sm: "-4rem" }}
+                    ml={{ base: "1.8rem", sm: "4rem" }}
                     transition="all 0.25s ease-in-out"
                     boxShadow="lg"
-                    alt={data.featuredLeft.title}
+                    alt={data.featuredLeft?.title}
                   />
                 </SimpleGrid>
               )}
@@ -338,41 +350,41 @@ const Home = () => {
                   overflow="hidden"
                   h="100%"
                 >
-                  <Flex flexDir="column" p={{ base: '8', xl: '16' }}>
+                  <Flex flexDir="column" p={{ base: "8", xl: "16" }}>
                     <Image
-                      src={data.featuredRight.icon}
+                      src={data.featuredRight?.icon}
                       h="16"
                       mb="4"
                       mr="auto"
-                      alt={data.featuredRight.title}
+                      alt={data.featuredRight?.title}
                     />
-                    <Heading size="xl">{data.featuredRight.title}</Heading>
+                    <Heading size="xl">{data.featuredRight?.title}</Heading>
                     <Text
                       color="brand.green.solid"
                       transition="all 0.25s ease-in-out"
                       _groupHover={{
-                        filter: 'brightness(75%)',
+                        filter: "brightness(75%)",
                       }}
                       textTransform="uppercase"
                       letterSpacing="0.25rem"
                       mb="2"
                     >
-                      {data.featuredRight.subtitle}
+                      {data.featuredRight?.subtitle}
                     </Text>
                     <Text fontWeight="normal">
-                      {data.featuredRight.shortDescription}
+                      {data.featuredRight?.shortDescription}
                     </Text>
                   </Flex>
                   <Image
-                    src={data.featuredRight.cover}
+                    src={data.featuredRight?.cover}
                     objectFit="cover"
                     mt="auto"
                     borderTopLeftRadius="3xl"
-                    mb={{ base: '0rem', sm: '-4rem' }}
-                    ml={{ base: '1.8rem', sm: '4rem' }}
+                    mb={{ base: "0rem", sm: "-4rem" }}
+                    ml={{ base: "1.8rem", sm: "4rem" }}
                     transition="all 0.25s ease-in-out"
                     boxShadow="lg"
-                    alt={data.featuredRight.title}
+                    alt={data.featuredRight?.title}
                   />
                 </SimpleGrid>
               )}
@@ -396,24 +408,23 @@ const Home = () => {
           />
           <SimpleGrid columns={{ base: 1, md: 2 }} gap="10">
             <Image
-              src="/about/headshot-black.png"
+              src="/about/about.svg"
               borderRadius="3xl"
-              h={{ base: 'sm', sm: 'lg', md: 'xl' }}
               objectFit="cover"
               w="100%"
-              boxShadow="lg"
-              alt="Elliot Saha"
+              alt="Nixode"
+              px="12"
+              py="24"
             />
             <Flex flexDir="column" gap="2" my="auto">
-              <BrandHeading>about me.</BrandHeading>
+              <BrandHeading>about us.</BrandHeading>
               <Text>
-                Hi, I&apos;m Elliot—a seasoned web developer at the forefront of
-                deploying innovative solutions for the digital age. I&apos;ve been
-                working with building React web applications since 2020 and have
-                progressed my skills thoroughly allowing me to develop my own
-                philosophies of how projects should be structured, built, and
-                deployed. Each project I build has been an opportunity to refine
-                my skills and push the boundaries of what I believe I can do.
+                At Nixode, we are at the forefront of deploying innovative
+                digital solutions. Our focus spans social media strategies,
+                UI/UX designs, and developing cutting-edge web applications.
+                Each project is an opportunity to refine our methodologies and
+                push the boundaries of what we can achieve in the digital
+                landscape.
               </Text>
 
               <Box mt="4">

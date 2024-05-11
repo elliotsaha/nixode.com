@@ -1,6 +1,6 @@
-'use client';
-import React, { useRef } from 'react';
-import { FlexSection } from '@/components/factory';
+"use client";
+import React, { useRef } from "react";
+import { FlexSection } from "@/components/factory";
 import {
   Container,
   Flex,
@@ -10,12 +10,12 @@ import {
   Heading,
   Box,
   Icon,
-} from '@chakra-ui/react';
-import { Section, HiddenHeading, BrandHeading } from '@/components/factory';
-import { SplitText } from '@/components';
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
-import { FiMapPin } from 'react-icons/fi';
+} from "@chakra-ui/react";
+import { Section, HiddenHeading, BrandHeading } from "@/components/factory";
+import { SplitText } from "@/components";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { FiMapPin } from "react-icons/fi";
 
 interface FlowCardProps {
   stage: string;
@@ -27,7 +27,7 @@ interface FlowCardProps {
 const FlowCard = ({ stage, color, label, children }: FlowCardProps) => (
   <Flex
     bg="mono.white"
-    p={{ base: '8', xl: '12' }}
+    p={{ base: "8", xl: "12" }}
     borderRadius="3xl"
     boxShadow="lg"
     h="100%"
@@ -49,15 +49,15 @@ const About = () => {
 
   useGSAP(
     () => {
-      gsap.set('.animate-header', { visibility: 'visible' });
-      gsap.from('.animate-header', {
+      gsap.set(".animate-header", { visibility: "visible" });
+      gsap.from(".animate-header", {
         y: 75,
         stagger: {
           each: 0.01,
         },
       });
     },
-    { scope: container }
+    { scope: container },
   );
   return (
     <Box position="relative">
@@ -67,47 +67,46 @@ const About = () => {
         w="100%"
         position="absolute"
         loading="eager"
-        mt={{ base: '24', lg: '-36' }}
+        mt={{ base: "24", lg: "-36" }}
         zIndex="-1"
       />
       <Container maxW="container.xl" ref={container}>
         <Section position="relative">
           <main>
-            <Flex alignItems="center" pt={{ base: '48', md: '42' }} minH="90vh">
+            <Flex alignItems="center" pt={{ base: "48", md: "42" }} minH="90vh">
               <FlexSection flexDir="column" gap="4">
                 <SimpleGrid
                   columns={{ base: 1, md: 2 }}
-                  gap={{ base: '8', lg: '12' }}
+                  gap={{ base: "8", lg: "12" }}
                 >
                   <Flex flexDir="column" gap="2" justifyContent="center">
                     <HiddenHeading>About me</HiddenHeading>
                     <BrandHeading overflow="hidden">
                       <SplitText className="animate-header" visibility="hidden">
-                        about me.
+                        about us.
                       </SplitText>
                     </BrandHeading>
-                    <Text maxW="xl">
-                      Over the course of four years, I have dedicated myself to
-                      the intricacies of developing React web applications, an
-                      endeavor that has allowed me to navigate and leverage the
-                      capabilities of various meta-frameworks such as NextJS and
-                      Gatsby. I have experience developing and publishing
-                      component system libraries, building authentication
-                      systems, and have leveraged CI/CD systems. Currently, I’m
-                      developing a B2B company that allows green energy
-                      companies to connect with each other.
+                    <Text maxW="xl" mt="-6">
+                      Over the past four years, Nixode has specialized in
+                      delivering state-of-the-art digital solutions, focusing on
+                      sophisticated design and strategic rebranding initiatives.
+                      Our expertise extends to building comprehensive digital
+                      infrastructures and enhancing operational efficiencies
+                      through advanced automation. We are committed to driving
+                      sustainable business growth and fostering meaningful
+                      industry collaborations.
                     </Text>
                   </Flex>
                   <Image
-                    src="/about/headshot-white.png"
+                    src="/about/about-page.svg"
                     borderRadius="3xl"
-                    h={{ base: 'sm', sm: 'md', md: 'lg' }}
                     objectPosition="50% 30%"
                     objectFit="cover"
                     w="100%"
-                    boxShadow="lg"
                     loading="eager"
-                    alt="Elliot Saha"
+                    px="12"
+                    py="12"
+                    alt="Nixode"
                   />
                 </SimpleGrid>
               </FlexSection>
@@ -118,82 +117,82 @@ const About = () => {
         <Section my="32" position="relative">
           <BrandHeading>process & workflow.</BrandHeading>
           <SimpleGrid
-            templateColumns={{ base: '1fr', md: '1fr 1fr' }}
+            templateColumns={{ base: "1fr", md: "1fr 1fr" }}
             my="8"
             spacing="10"
           >
             <FlowCard
               stage="01"
-              label="Design & Prototyping"
+              label="Conceptualization & Design"
               color="brand.blue.solid"
             >
-              The first stage in building a web application is to design and
-              prototype it, allowing you to develop a general theme of the
-              application which could vary depending on the audience that the
-              product is trying to market towards.
+              At Nixode, we begin every project by understanding its core
+              objectives and audience, setting the stage for comprehensive
+              solutions that span design, strategy, and user experience. This
+              approach ensures our solutions are perfectly tailored to meet
+              diverse market needs.
             </FlowCard>
-            <FlowCard stage="02" label="Development" color="brand.purple.solid">
-              The second stage in building a web application, after the initial
-              design and prototyping phase, is development. This phase is marked
-              by transitioning from conceptual and visual models to functional
-              software. It involves meticulously planned steps enabling the web
-              application to scale.
+            <FlowCard
+              stage="02"
+              label="Solution Development"
+              color="brand.purple.solid"
+            >
+              Moving from concept to execution, our development phase
+              encompasses the creation of full-spectrum, scalable solutions that
+              integrate seamlessly across all required platforms and
+              technologies. Our meticulous approach ensures robust functionality
+              and future growth potential.
             </FlowCard>
-            <FlowCard stage="03" label="Integration" color="brand.green.solid">
-              The integration phase is a critical phase in building web
-              application development, as it focuses on ensuring that all
-              services and APIs the application relies on are seamlessly managed
-              across both development and production environments.
+            <FlowCard
+              stage="03"
+              label="System Integration"
+              color="brand.green.solid"
+            >
+              Critical to our turnkey solutions is the seamless integration of
+              various systems and technologies. We ensure that every component
+              functions perfectly together, optimizing workflow and enhancing
+              overall system reliability across operational environments.
             </FlowCard>
-            <FlowCard stage="04" label="Management" color="brand.yellow.solid">
-              The final phase in building a web application is management, which
-              encompasses the ongoing tasks of updating, monitoring, and
-              maintaining the application to ensure its optimal performance,
-              security, and relevance to users. This stage is crucial for
-              sustaining the application&apos;s utility and user satisfaction over
-              time.
+            <FlowCard
+              stage="04"
+              label="Ongoing Management"
+              color="brand.yellow.solid"
+            >
+              Our engagement doesn&apos;t end at deployment. We provide ongoing
+              management services, ensuring our solutions continue to operate at
+              peak efficiency. Regular updates, rigorous monitoring, and
+              proactive maintenance are part of our commitment to excellence and
+              client satisfaction.
             </FlowCard>
           </SimpleGrid>
         </Section>
 
         <Section my="32" position="relative">
           <SimpleGrid columns={{ base: 1, md: 2 }} gap="10">
-            <Box boxShadow="lg" borderRadius="3xl" position="relative">
+            <Box borderRadius="3xl" position="relative">
               <Image
-                src="/about/vancouver.png"
+                src="/about/about2.svg"
                 borderRadius="3xl"
-                h={{ base: 'sm', sm: 'lg', md: 'xl' }}
+                objectPosition="50% 30%"
                 objectFit="cover"
                 w="100%"
-                alt="English Bay, Vancouver"
+                loading="eager"
+                px="12"
+                py="12"
+                alt="Nixode"
               />
-              <Flex
-                bg="background"
-                position="absolute"
-                borderRadius="full"
-                bottom="4"
-                left="4"
-                alignItems="center"
-                px="4"
-                py="2"
-                gap="2"
-              >
-                <Icon as={FiMapPin} color="mono.black.500" />
-                <Text color="mono.black.500">English Bay, Vancouver</Text>
-              </Flex>
             </Box>
             <Flex flexDir="column" gap="2" my="auto">
-              <BrandHeading>student life.</BrandHeading>
+              <BrandHeading>our mission.</BrandHeading>
               <Text>
-                Currently, I&apos;m a first year student at the University of British
-                Columbia, and when I’m not building projects, I’m mostly hanging
-                out with friends eating at sushi places in Vancouver or I’m
-                drinking coffee at one of the many beaches this city has to
-                offer. Before I came here though, I lived in Edmonton, AB where
-                the majority of projects were made. I used to volunteer for the
-                City of Edmonton Youth Council and worked on various initiatives
-                regarding mental health awareness, sexual violence prevention,
-                and committee wellbeing.
+                At Nixode, our mission is to drive transformative digital
+                solutions that empower businesses and enhance user experiences.
+                We leverage cutting-edge technologies and innovative strategies
+                to deliver turnkey solutions that ensure scalability,
+                efficiency, and market leadership. Our commitment to excellence
+                and continuous improvement is at the core of our corporate
+                ethos, as we strive to set new standards in the industry and
+                contribute to our clients&apos; success.
               </Text>
             </Flex>
           </SimpleGrid>
