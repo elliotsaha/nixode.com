@@ -1,14 +1,14 @@
-import type {Metadata} from 'next';
-import {Navbar, Footer, Providers} from '@/components';
-import {Body} from '@/components/factory';
+import type { Metadata } from "next";
+import { Navbar, Footer, Providers } from "@/components";
+import { Body } from "@/components/factory";
 
 export const metadata: Metadata = {
   title: {
-    default: "Elliot Saha's Portfolio",
-    template: "%s | Elliot Saha's Portfolio",
+    default: "Nixode",
+    template: "%s | Nixode",
   },
   description:
-    "Hi, I'm Elliot—a seasoned web developer at the forefront of deploying innovative solutions for the digital age.",
+    "Nixode is a turnkey solution company that specializes in rebranding, social media, and UI/UX design.",
 };
 
 const RootLayout = ({

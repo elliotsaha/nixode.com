@@ -122,21 +122,14 @@ const Home = () => {
                 </Flex>
                 <Flex flexDir="column" gap="0">
                   <HiddenHeading>
-                    Turnkey solutions for your company
+                    Turnkey design solutions for your company
                   </HiddenHeading>
                   <BrandHeading overflow="hidden">
                     <SplitText
                       className="animate-header-line-1"
                       visibility="hidden"
                     >
-                      Turnkey solutions
-                    </SplitText>
-                    <br />
-                    <SplitText
-                      className="animate-header-line-2"
-                      visibility="hidden"
-                    >
-                      for your company.
+                      Turnkey design solutions.
                     </SplitText>
                   </BrandHeading>
                 </Flex>
