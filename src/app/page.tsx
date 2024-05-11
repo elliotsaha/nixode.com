@@ -28,7 +28,6 @@ import { gsap } from "gsap";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { CaseStudy } from "@/types";
-import { normalizeLength } from "@/helpers";
 
 interface CardProps {
   title: string;
